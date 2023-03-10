@@ -1,0 +1,16 @@
+nginx:
+  build: ./nginx/
+  container_name: nginx
+  ports:
+    - 8002:80
+  links:
+    - php
+  volumes:
+    - ./www/html/:/var/www/html/
+php:
+  build: ./php/
+  container_name: php
+  expose:
+      - 9000
+  volumes:
+      - ./www/html/:/var/www/html/
